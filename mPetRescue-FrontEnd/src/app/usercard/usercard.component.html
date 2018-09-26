@@ -1,0 +1,14 @@
+<div *ngIf="isUserLoggedIn  && CurrentUser">
+	<div class="col-lg-5 col-md-5 col-sm-5">
+		<div class="single_team" style="background: #f8f8f8; padding: 30px; border: 3px solid #B18904;">
+			<div class="team_img">
+				<img alt="{{Avatar}}" src="{{Avatar}}">
+			</div>
+			<h5 class>{{CurrentUser.username}}</h5>
+			<span>{{CurrentUser.rang}}</span>
+			<div>
+				<button type="button" class="submit_btn">Mon espace</button>&nbsp;<button type="button" class="submit_btn" (click)="signOut()">Déconnexion</button>
+			</div>
+		</div>
+	</div>
+</div>

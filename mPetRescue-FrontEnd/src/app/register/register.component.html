@@ -1,0 +1,39 @@
+<div *ngIf="!isUserLoggedIn">
+<div class="col-lg-5 col-md-5 col-sm-5">
+<div class="contact_form">
+	<form class="form-message" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+		<div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div class="help-block" *ngIf="f.firstName.errors.required">Le prénom est requis</div>
+			 <div class="help-block" *ngIf="f.firstName.errors.minlength">Le prénom doit être au moins de 2 caractères</div>
+        </div>
+		<input formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" type="text" placeholder="Prénom">
+
+		<div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div class="help-block" *ngIf="f.lastName.errors.required">Le nom est requis</div>
+			<div class="help-block" *ngIf="f.lastName.errors.minlength">Le nom doit être au moins de 2 caractères</div>
+        </div>
+        <input formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="text" placeholder="Nom">
+
+		<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div class="help-block" *ngIf="f.username.errors.required">Le pseudo est nécessaire</div>
+			<div class="help-block" *ngIf="f.username.errors.minlength">Le pseudo doit être au moins de 3 caractères</div>
+        </div>
+        <input formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" type="text" placeholder="Pseudo">
+		
+		<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div class="help-block" *ngIf="f.email.errors.required">L'adresse email est obligatoire</div>
+			<div class="help-block" *ngIf="f.email.errors.email">Adresse email incorrecte</div>
+        </div>
+		<input formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" placeholder="Email">
+		
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div class="help-block" *ngIf="f.password.errors.required">Mot de passe requis</div>
+            <div class="help-block" *ngIf="f.password.errors.minlength">Le mot de passe doit être au moins de 6 caractères</div>
+        </div>
+        <input formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" placeholder="Mot de passe">
+
+		<input class="submit_btn" type="submit" value="Inscription"> 
+	</form>
+</div>
+</div>
+</div>
