@@ -1,0 +1,25 @@
+"assets": [
+        "assets",
+        "favicon.png"
+      ],
+"styles": [
+   "styles.css"
+],
+"scripts": [
+  "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js",
+  "https://maps.googleapis.com/maps/api/js",
+  "./assets/js/jquery.ui.map.js",
+  "./assets/js/wow.min.js",
+  "./assets/js/bootstrap.min.js",
+  "./assets/js/jquery.superslides.min.js",
+  "./assets/js/slick.min.js",
+  "https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/./assets/js/jquery.circliful.min.js",
+  "./assets/js/modernizr.custom.js",
+  "./assets/js/classie.js",
+  "./assets/js/elastic_grid.min.js",
+  "./assets/js/elastic_grid.min.js",
+  "./assets/js/portfolio_slider.js",
+  "./assets/js/custom.js",
+  "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js",
+  "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
+];

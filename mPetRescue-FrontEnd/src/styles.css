@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+@import url('http://fonts.googleapis.com/css?family=Varela');
+@import url('http://fonts.googleapis.com/css?family=Montserrat');
+@import "assets/css/bootstrap.min.css";
+@import "assets/css/font-awesome.min.css";
+@import "assets/css/superslides.css";
+@import "assets/css/slick.css";
+@import "assets/css/animate.css";
+@import "assets/css/elastic_grid.css";
+@import url("https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/assets/css/jquery.circliful.css");    
+@import "assets/css/themes/default-theme.css";
+@import "assets/style.css";
