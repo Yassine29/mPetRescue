@@ -1,0 +1,105 @@
+-- --------------------------------------------------------
+-- Hôte :                        127.0.0.1
+-- Version du serveur:           10.2.12-MariaDB - mariadb.org binary distribution
+-- SE du serveur:                Win64
+-- HeidiSQL Version:             9.4.0.5125
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Export de la structure de la base pour mpetrescue
+CREATE DATABASE IF NOT EXISTS `mpetrescue` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `mpetrescue`;
+
+-- Export de la structure de la table mpetrescue. animal
+CREATE TABLE IF NOT EXISTS `animal` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `espece` varchar(50) NOT NULL DEFAULT '0',
+  `age` int(11) DEFAULT 0,
+  `aspect` varchar(100) DEFAULT '0',
+  `caractere` varchar(100) DEFAULT '0',
+  `lieux` varchar(200) NOT NULL DEFAULT '0',
+  `etat` varchar(50) NOT NULL DEFAULT '0',
+  `photo` varchar(100) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+-- Export de la structure de la table mpetrescue. article
+CREATE TABLE IF NOT EXISTS `article` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user` bigint(20) NOT NULL DEFAULT 0,
+  `date` varchar(10) NOT NULL DEFAULT '0',
+  `title` varchar(100) NOT NULL DEFAULT '0',
+  `content` varchar(3000) NOT NULL DEFAULT '0',
+  `rating` int(11) NOT NULL DEFAULT 0,
+  `cover` varchar(100) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `FK_article_user` (`user`),
+  CONSTRAINT `FK_article_user` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+-- Export de la structure de la table mpetrescue. cas
+CREATE TABLE IF NOT EXISTS `cas` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `rapporteur` bigint(20) NOT NULL,
+  `date_creation` varchar(50) NOT NULL,
+  `date_repere` varchar(50) NOT NULL,
+  `localisation` varchar(100) NOT NULL,
+  `lieu` varchar(100) NOT NULL,
+  `ville` varchar(50) NOT NULL,
+  `animal` varchar(50) NOT NULL,
+  `etat` varchar(100) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `statut_cas` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_cas_user` (`rapporteur`),
+  CONSTRAINT `FK_cas_user` FOREIGN KEY (`rapporteur`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+-- Export de la structure de la table mpetrescue. espece
+CREATE TABLE IF NOT EXISTS `espece` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `espece` varchar(50) NOT NULL DEFAULT '0',
+  `description` varchar(200) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+-- Export de la structure de la table mpetrescue. picture
+CREATE TABLE IF NOT EXISTS `picture` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cas` bigint(20) NOT NULL DEFAULT 0,
+  `location` varchar(100) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `FK_picture_cas` (`cas`),
+  CONSTRAINT `FK_picture_cas` FOREIGN KEY (`cas`) REFERENCES `cas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+-- Export de la structure de la table mpetrescue. user
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `photo` varchar(100) DEFAULT NULL,
+  `rang` varchar(50) NOT NULL,
+  `nbr_cas` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_sb8bbouer5wak8vyiiy4pf2bx` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
